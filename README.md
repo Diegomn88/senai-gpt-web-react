@@ -22,7 +22,7 @@
 
    ![image](https://github.com/user-attachments/assets/f33565f8-6b1e-468f-8065-f05ddb8e59f9)
 
-   4. Após todas etapas concluidas o resultado esperado é o abaixo.
+4. Após todas etapas concluidas o resultado esperado é o abaixo.
 
    ![image](https://github.com/user-attachments/assets/a0b25eaa-fa78-4705-9a2e-79596b281c39)
 
