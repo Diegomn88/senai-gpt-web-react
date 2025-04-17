@@ -1,12 +1,11 @@
-
 .page-container {
 
     display: flex;
 }
 
-h1{
+h1 {
     font-size: 76px;
-    font-family:inter;
+    font-family: inter;
     font-weight: normal;
 }
 
@@ -16,32 +15,22 @@ h1{
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    justify-content:center;
-        width: 50vw;
+    justify-content: center;
+    width: 50vw;
     height: 100vh;
-
 
 }
 
-.logo { 
+.logo {
 
-height: 60px;
+    height: 60px;
 
 }
 
 .robo-image {
 
-    background-image: url("../assets/imgs/Rectangle1.png");
+    background-image: url("../../assets/imgs/Rectangle1.png");
     background-size: cover;
-    /*background-repeat: no-repeat;*/
-
-     
-
     width: 50vw;
     height: 100vh;
-
-
 }
-    
-
-     
