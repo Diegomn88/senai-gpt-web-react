@@ -27,5 +27,27 @@
    ![image](https://github.com/user-attachments/assets/a0b25eaa-fa78-4705-9a2e-79596b281c39)
 
 
+ # Passo a passo para importar os dados.
+
+1. Criar as pastas destinadas para o projeto.
+   1.1 pages > chat > login + arquivos index.js + login.css
+
+2. Seguindo com a configuração dos arquivos, devemos realizar a limpeza para começar a importar o html + css.
+   2.1 no arquivo index, foi realizado a migração do html.
+   2.2 no arquivo login.css foi realziado a migração do css para compor a estilização.
+
+3. Após a migração dos componentes de html e css.
+   3.1 foi realizado alterações para que react identificasse os componentes.
+   3.2 alterado o nome das classes para classNane.
+   3.3 foi realizado a inclusão /> no final das instruções.
+
+4. realizado a alteração dos imputs, incluindo os eventos para captar os dados de email e senha.
+   4.1 criado a função java script do onClick para chamar a função onLoginClick.
+   4.2 criado a função fetch para declarar o metodo async + await, utilizados para enviar dados via post.(JSON).
+   4.3 criado o metodo.
+
+   
+
+
 
 
