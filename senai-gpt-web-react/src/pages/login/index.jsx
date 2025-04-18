@@ -10,10 +10,6 @@ function login() {
 
   const onLoginClick = async () => {
 
-    // console.log ("Funcionou");
-    // console.log (email);
-    // console.log (password);
-
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/login", {
 
       headers: {
@@ -25,23 +21,59 @@ function login() {
         email: email,
         password: password
       })
-
     });
 
     console.log(response);
+
+    if (response.ok == true) {
+
+      alert("login realizado com sucesso");
+
+      console.log(response);
+      let json = await response.json();
+
+      let token = json.accessToken;
+
+      console.log("token: " + token);
+
+      //localstorage serve para salvar o token.
+      localStorage.setItem("meuToken", token);
+
+
+      // function setCookie(name,vale,days){
+      //   const date = new Date ();
+      //   date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // dias em ms
+      //   const expires = "expires=" + date.toUTCString();
+      //   document.cookie = `${name} = ${value}; ${expires}; path=/`;
+      // } 
+      // setCookie ("meuToken",token = 7)
+
+      window.location.href = "/chat";
+
+
+
+
+    } else {
+
+      if (response.status == 401) {
+        alert("credenciais incorretas");
+
+      } else {
+
+        alert("Erro inesperado aconteceu");
+
+      }
+    }
 
   }
 
   return (
     <>
-
       <header> </header>
 
       <main className="page-container">
 
-        <div className="robo-image">
-        </div>
-
+        <div className="robo-image"> </div>
 
         <div className="login-conteiner">
 
