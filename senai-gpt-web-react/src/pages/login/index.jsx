@@ -2,8 +2,7 @@ import "./login.css";
 import logo from "../../assets/imgs/Chat.png";
 import { useState } from "react";
 
-
-function login() {
+function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,8 +48,6 @@ function login() {
       // setCookie ("meuToken",token = 7)
 
       window.location.href = "/chat";
-
-
 
 
     } else {
@@ -101,4 +98,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
