@@ -9,6 +9,16 @@ function Login() {
 
   const onLoginClick = async () => {
 
+
+    //  const email = "admin@example.com";
+    //  if (validarEmail(email)) {
+    //    console.log("Email válido!");
+    //  } else {
+    //    console.log("Email inválido!");
+    //  }
+
+
+
     let response = await fetch("https://senai-gpt-api.azurewebsites.net/login", {
 
       headers: {
@@ -97,5 +107,11 @@ function Login() {
     </>
   )
 }
+
+// function validarEmail(email) {
+//   const padrao = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return padrao.test(email);
+
+// }
 
 export default Login
