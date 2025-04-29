@@ -19,7 +19,6 @@ function Chat() {
 
     const [chats, setChats] = useState([])
     const [chatSelecionado, setChatSelecionado] = useState(null);
-
     const [userMessage, setUserMessage] = useState("");
 
     useEffect(() => {
@@ -96,31 +95,68 @@ function Chat() {
     }
     const enviarMessage = async (message) => {
 
-        let resposta = await chatGPT(message);
+        console.log("Mensagem", message);
+        let userId = localStorage.getItem("meuId");
 
-        console.log("Resposta: ", resposta);
+        let novaMensagemUsuario = {
+
+            text: message,
+            Id: crypto.randomUUID(),
+            userId: userId,
+        };
+
+        let respostaGPT = await chatGPT(message);
+
+        let novaRespostaChatGpt = {
+            userId: "chatbot",
+            text: respostaGPT,
+            id: crypto.randomUUID(),
+        };
+
+        let novoChatSelecionado = { ...chatSelecionado };
+        novoChatSelecionado.messages.push(novaMensagemUsuario);
+        novoChatSelecionado.messages.push(novaRespostaChatGpt);
+        setChatSelecionado(novoChatSelecionado);
+
+        setUserMessage("");
+
+
+
+        //  let novaRespostaChatGpt = {
+        //   userId: "chatbot",
+        //   text: resposta,
+        //   id: 10
+
+
+        // 
+
+        // console.log("Resposta: ", resposta);
+
+        // let novaMensagemUsuario = {
+        //     userId: "userId",
+        //     text: message,
+        //     id: 10
+        // };
+
+        // let novaRespostaChatGpt = {
+        //      userId: "chatbot",
+        //      text: resposta,
+        //      id: 10
+
+        // };
+
+        // let novoChatSelecionado = { ...chatSelecionado };
+        // novoChatSelecionado.messages.push(novaMensagemUsuario);
+        // novoChatSelecionado.messages.push(novaRespostaChatGpt);
+
+        // setChatSelecionado(novoChatSelecionado);
+    }
+    const onKeyUp = (event) => {
+        if (event.key == 'Enter') {
+            enviarMessage(userMessage);
+        }
 
     }
-
-
-    let novaMensagemUsuario = {
-        userId: "userId",
-        text: message,
-        id: 10
-    };
-
-    let novaRespostaChatGpt = {
-        userId: "chatbot",
-        text: resposta,
-        id: 10
-
-    };
-
-    let novoChatSelecionado = { ...chatSelecionado};
-    novoChatSelecionado.messages.push(novaMensagemUsuario);
-    novoChatSelecionado.messages.push(novaRespostaChatGpt);
-
-    setChatSelecionado(novoChatSelecionado);
 
     return (
 
@@ -163,6 +199,11 @@ function Chat() {
                         <button className="botoes" type="button">
                             <img src={logo4} alt="" srcset="" />
                             Updates & FAQ </button>
+
+
+                        <button className="botoes" type="button">
+                            <img src={logo5} alt="" srcset="" />
+                            Log out </button>
 
                     </div>
 
@@ -228,14 +269,13 @@ function Chat() {
 
                                 <div className="chat-header">
 
-                                    <h2>{chatSelecionado.chatTitle} </h2>
+                                    <h2>{chatSelecionado.chatTitle}</h2>
 
                                 </div>
 
                                 <div className="chat-messages">
 
                                     {chatSelecionado.messages.map(message => (
-
                                         <p className={"message-item " + (message.userId == "chatbot" ? "chatbot" : "")}> {message.text}</p>
                                     ))}
 
@@ -254,13 +294,14 @@ function Chat() {
                         <img src={logo11} alt="" srcset="" />
 
 
-                        <input
+                        <input onKeyUp={event => onKeyUp(event)}
                             className="inptchat"
                             value={userMessage}
                             onChange={event => setUserMessage(event.target.value)}
                             type="type-message"
                             placeholder="type message"
                         />
+
 
                         <img onClick={() => enviarMessage(userMessage)} src={logo12} alt="Send." />
 
@@ -278,5 +319,4 @@ function Chat() {
 
 }
 
-export default Chat
-
+export default Chat;
