@@ -40,15 +40,6 @@ function Login() {
       localStorage.setItem("meuToken", token);
       localStorage.setItem("meuI", userId);
 
-
-      // function setCookie(name,vale,days){
-      //   const date = new Date ();
-      //   date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // dias em ms
-      //   const expires = "expires=" + date.toUTCString();
-      //   document.cookie = `${name} = ${value}; ${expires}; path=/`;
-      // } 
-      // setCookie ("meuToken",token = 7)
-
       window.location.href = "/chat";
 
 
@@ -101,11 +92,5 @@ function Login() {
     </>
   )
 }
-
-// function validarEmail(email) {
-//   const padrao = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   return padrao.test(email);
-
-// }
 
 export default Login

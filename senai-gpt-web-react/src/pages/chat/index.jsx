@@ -60,7 +60,7 @@ function Chat() {
 
         // Configurações do endpoint e chave da API
         const endpoint = "https://ai-testenpl826117277026.openai.azure.com/";
-        const apiKey = "";
+        const apiKey = "DCYQGY3kPmZXr0lh7xeCSEOQ5oiy1aMlN1GeEQd5G5cXjuLWorWOJQQJ99BCACYeBjFXJ3w3AAAAACOGol8N";
         const deploymentId = "gpt-4"; // Nome do deployment no Azure OpenAI
         const apiVersion = "2024-05-01-preview"; // Verifique a versão na documentação
 
@@ -120,42 +120,53 @@ function Chat() {
 
         setUserMessage("");
 
+        let response = await fetch("https://senai-gpt-api.azurewebsites.net/chats/" + chatSelecionado.id, {
+            method: "PUT",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                novoChatSelecionado
+            )
+        });
 
+        if (response.ok == false) {
 
-        //  let novaRespostaChatGpt = {
-        //   userId: "chatbot",
-        //   text: resposta,
-        //   id: 10
+            console.log("Salvar o chat deu errado.");
 
+        }
 
-        // 
-
-        // console.log("Resposta: ", resposta);
-
-        // let novaMensagemUsuario = {
-        //     userId: "userId",
-        //     text: message,
-        //     id: 10
-        // };
-
-        // let novaRespostaChatGpt = {
-        //      userId: "chatbot",
-        //      text: resposta,
-        //      id: 10
-
-        // };
-
-        // let novoChatSelecionado = { ...chatSelecionado };
-        // novoChatSelecionado.messages.push(novaMensagemUsuario);
-        // novoChatSelecionado.messages.push(novaRespostaChatGpt);
-
-        // setChatSelecionado(novoChatSelecionado);
     }
     const onKeyUp = (event) => {
         if (event.key == 'Enter') {
             enviarMessage(userMessage);
         }
 
+    }
+
+
+    const clickNew1 = async () => {
+debugger
+        let newChat1 = {
+            chatTitle: "ChatMendes",
+            Id: crypto.randomUUID(),
+            userId: crypto.randomUUID(),
+            messages:[]
+        };
+
+        let response = await fetch("https://senai-gpt-api.azurewebsites.net/chats/", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken"),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                newChat1
+            )
+        });
+
+        // criando novo chat 
     }
 
     return (
@@ -168,8 +179,7 @@ function Chat() {
 
                     <div className="superior">
 
-                        <button className="btn-chat" type="button"> + New chat</button>
-
+                        <button className="btnChat" type="button" onClick={() => clickNew1()}> NewChat </button>
 
                         {chats.map(chat => (
                             <button className="botoes" type="button" onClick={() => clickChat(chat)}>
@@ -191,7 +201,7 @@ function Chat() {
                             Light mode </button>
 
 
-                        <button className="botoes" type="button">
+                        <button className="botoes" type="button" onClick={() => clickAccount()}>
                             <img src={logo3} alt="" srcset="" />
                             My account </button>
 
@@ -245,7 +255,6 @@ function Chat() {
                                 </div>
 
                                 <div className="titulo-1">
-
 
                                     <img src={logo9} alt="" srcset="" />
                                     <h1>Exemples</h1>
@@ -316,6 +325,7 @@ function Chat() {
         </>
 
     )
+
 
 }
 
