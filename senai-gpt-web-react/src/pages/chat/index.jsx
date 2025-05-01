@@ -147,7 +147,7 @@ function Chat() {
 
 
     const clickNew1 = async () => {
-debugger
+// debugger
         let newChat1 = {
             chatTitle: "ChatMendes",
             Id: crypto.randomUUID(),

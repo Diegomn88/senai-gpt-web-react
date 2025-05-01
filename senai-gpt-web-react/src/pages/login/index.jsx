@@ -76,21 +76,22 @@ function Login() {
           <input className="inpt" onChange={event => setEmail(event.target.value)} type="email" placeholder="Insira o Email" />
           <input className="inpt" onChange={event => setPassword(event.target.value)} type="password" placeholder="Insira o Senha" />
 
+          <button className="btn-primary" onClick={onLoginClick} type="Entrar">Entrar </button>
 
-          
-          <button className="btn-primary" onClick={onLoginClick} type="Entrar">Entrar
+          <a href="/new-user"> Clique aqui para criar um usuario</a>
 
-          </button>
 
         </div>
 
       </main>
-
-      <footer> </footer>
-
 
     </>
   )
 }
 
 export default Login
+
+
+
+
+
